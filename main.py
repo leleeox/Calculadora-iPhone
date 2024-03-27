@@ -37,15 +37,15 @@ class MeuApp(QMainWindow):
         self.multiplicacao.clicked.connect(lambda: self.definirOperacao(self.multiplicarNumeros))
         self.maisMenos.clicked.connect(self.inverterNegativoPositivo)
         self.btnPorcentagem.clicked.connect(self.porcentagemNumeros)
-
+        self.btnVirgula.clicked.connect(lambda: self.btnNumeros(self.btnNumeros))
 
     def mostrarDisplay(self, value):
-        value = str(value).replace(".",",")
+        value = str(value).replace(",",".")
         self.resultado.setText(value)
 
     def pegarDisplay(self):
         value = self.resultado.text()
-        value = value.replace(",", ".")
+        value = value.replace(".", ",")
         try:
             value = int(value)
         except:
@@ -59,11 +59,26 @@ class MeuApp(QMainWindow):
         self.mostrarDisplay(0)
 
     def btnNumeros(self, btn):
-        if self.pegarDisplay() == "0":
-            self.mostrarDisplay(btn)
-        else:
-            ultimoValor = str(self.pegarDisplay() + btn)
-            self.mostrarDisplay(ultimoValor)
+        if btn.text() == ",":
+            if isinstance(self.pegarDisplay(), int):
+                ultimoValor = str(self.pegarDisplay())
+                self.mostrarDisplay(ultimoValor + btn)
+
+            else:
+                if isinstance(self.pegarDisplay(), int):
+                    if self.pegarDisplay() == 0:
+                        self.mostrarDisplay(btn.text())
+                    else:
+                        ultimoValor = str(self.pegarDisplay())
+                        self.mostrarDisplay(ultimoValor + btn.text())
+                else:
+                    if self.resultado.text()[-1] == ",":
+                        ultimoValor = self.resultado.text()
+                        self.mostrarDisplay(ultimoValor + btn.text())
+                    else:
+                        ultimoValor = str(self.pegarDisplay())
+                        self.mostrarDisplay(ultimoValor + btn.text())
+
 
     def limparNumeros(self):
         self.num1 = 0
@@ -86,7 +101,7 @@ class MeuApp(QMainWindow):
     def porcentagemNumeros(self):
         porcent = self.pegarDisplay() / 100
         if self.op == self.somarNumeros or self.op == self.subtrairNumeros:
-            porcent = self.num1* porcent
+            porcent = self.num1 * porcent
         self.mostrarDisplay(porcent)
 
     def inverterNegativoPositivo(self):
@@ -111,8 +126,7 @@ class MeuApp(QMainWindow):
 
             self.numResult = self.op()
             self.mostrarDisplay(self.numResult)
-            print(self.numResult)
-
+            
 
 if __name__ == "__main__":
     app = QApplication([])
