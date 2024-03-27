@@ -59,11 +59,11 @@ class MeuApp(QMainWindow):
         self.mostrarDisplay(0)
 
     def btnNumeros(self, btn):
-        if self.pegarDisplay() == 0:
+        if self.pegarDisplay() == "0":
             self.mostrarDisplay(btn)
         else:
             ultimoValor = str(self.pegarDisplay() + btn)
-            self.mostrarDisplay(ultimoValor )
+            self.mostrarDisplay(ultimoValor)
 
     def limparNumeros(self):
         self.num1 = 0
