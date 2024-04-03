@@ -1,23 +1,24 @@
 from PyQt5.QtWidgets import *
 from PyQt5.uic import loadUi
-from logger import LogManagement
+from os import path
 
 class MeuApp(QMainWindow):
 
     num1 = 0
     num2 = 0
-    result = 0
+    numResultado = 0
     op = None
-
-
-    log = LogManagement(__file__)
 
 
     def __init__(self):
         super().__init__()
         loadUi("calculadoraInterface.ui", self)
+        self.acoesBotao()
 
-        self.log.info("Iniciei a interface")
+    def localPath(self, relativo):
+        return f'{path.dirname(path.realpath(__file__))}\\{relativo}'
+
+    def acoesBotao(self):
         self.numeroZero.clicked.connect(lambda: self.btnNumeros(0))
         self.numeroUm.clicked.connect(lambda: self.btnNumeros(1))
         self.numeroDois.clicked.connect(lambda: self.btnNumeros(2))
@@ -28,88 +29,78 @@ class MeuApp(QMainWindow):
         self.numeroSete.clicked.connect(lambda: self.btnNumeros(7))
         self.numeroOito.clicked.connect(lambda: self.btnNumeros(8))
         self.numeroNove.clicked.connect(lambda: self.btnNumeros(9))
+ 
+        
+        self.btnResultado.clicked.connect(self.mostrarResultado)
 
-        self.igual.clicked.connect(self.mostrarResultado)
-        self.limparTudo.clicked.connect(self.limparNumeros)
-        self.adicao.clicked.connect(lambda: self.definirOperacao(self.somarNumeros))
-        self.subtracao.clicked.connect(lambda: self.definirOperacao(self.subtrairNumeros))
-        self.divisao.clicked.connect(lambda: self.definirOperacao(self.divisaoNumeros))
-        self.multiplicacao.clicked.connect(lambda: self.definirOperacao(self.multiplicarNumeros))
-        self.maisMenos.clicked.connect(self.inverterNegativoPositivo)
-        self.btnPorcentagem.clicked.connect(self.porcentagemNumeros)
-        self.btnVirgula.clicked.connect(lambda: self.btnNumeros(self.btnNumeros))
+        self.btnLimpar.clicked.connect(self.limparNumeros)
+        self.btnTrocarSinal.clicked.connect(self.trocaSinal)
+        self.btnPorcentagem.clicked.connect(self.porcentagemNum) 
+        self.btnVirgula.clicked.connect(lambda: self.btnNumeros(self.btnVirgula))
 
+
+        self.btnAdicao.clicked.connect(lambda: self.definirOperacao(self.somarNumeros))
+        self.btnSubtracao.clicked.connect(lambda: self.definirOperacao(self.subtrairNumeros))
+        self.btnDivisao.clicked.connect(lambda: self.definirOperacao(self.divisaoNumeros))
+        self.btnMultiplicacao.clicked.connect(lambda: self.definirOperacao(self.multiplicarNumeros))
+
+  
     def mostrarDisplay(self, value):
-        value = str(value).replace(",",".")
-        self.resultado.setText(value)
+        value = str(value).replace('.', ',')
+        self.resultadoDisplay.setText(value)
 
     def pegarDisplay(self):
-        value = self.resultado.text()
-        value = value.replace(".", ",")
+        value = self.resultadoDisplay.text()
+        value = value.replace(',', '.')
         try:
             value = int(value)
         except:
             value = float(value)
         return value
 
-    def definirOperacao(self, operacao):
-        self.op = operacao
-        self.num1 = self.pegarDisplay()
-        self.num2 = 0
-        self.mostrarDisplay(0)
-
     def btnNumeros(self, btn):
+        ultimoValor = str(self.pegarDisplay())
         if btn.text() == ",":
+            if isinstance(self.pegarDisplay(), float):
+                return
+        else:
             if isinstance(self.pegarDisplay(), int):
-                ultimoValor = str(self.pegarDisplay())
-                self.mostrarDisplay(ultimoValor + btn)
-
+                if self.pegarDisplay() == 0:
+                    ultimoValor = ""
             else:
-                if isinstance(self.pegarDisplay(), int):
-                    if self.pegarDisplay() == 0:
-                        self.mostrarDisplay(btn.text())
-                    else:
-                        ultimoValor = str(self.pegarDisplay())
-                        self.mostrarDisplay(ultimoValor + btn.text())
-                else:
-                    if self.resultado.text()[-1] == ",":
-                        ultimoValor = self.resultado.text()
-                        self.mostrarDisplay(ultimoValor + btn.text())
-                    else:
-                        ultimoValor = str(self.pegarDisplay())
-                        self.mostrarDisplay(ultimoValor + btn.text())
-
-
+                if self.resultadoDisplay.text()[-1] == ",":
+                    ultimoValor = self.resultadoDisplay.text()
+        self.mostrarDisplay(ultimoValor + btn.text())
+    
     def limparNumeros(self):
         self.num1 = 0
         self.num2 = 0
-        self.numResult = 0
-        self.resultado.clear()
-
+        self.numResultado = 0
+        self.op = None
+        self.mostrarDisplay(0)
+        
     def somarNumeros(self):
+        print(f'Soma({self.num1}+{self.num2}) = ', end='')
         return self.num1 + self.num2
-    
+   
     def subtrairNumeros(self):
+        print(f'Sub({self.num1} - {self.num2})= ', end='')
         return self.num1 - self.num2
-
+    
     def multiplicarNumeros(self):
+        print(f'Mult({self.num1} * {self.num2})= ', end='')
         return self.num1 * self.num2
-    
+   
     def divisaoNumeros(self):
+        print(f'Div({self.num1} / {self.num2})= ', end='')
         return self.num1 / self.num2
-    
-    def porcentagemNumeros(self):
-        porcent = self.pegarDisplay() / 100
+   
+    def porcentagemNum(self):
+        porcento = self.pegarDisplay() / 100
         if self.op == self.somarNumeros or self.op == self.subtrairNumeros:
-            porcent = self.num1 * porcent
-        self.mostrarDisplay(porcent)
-
-    def inverterNegativoPositivo(self):
-        numAtual = self.pegarDisplay()
-        numAtual *= -1
-        self.mostrarDisplay(numAtual)
-
-
+            porcento = self.num1 * porcento
+        self.mostrarDisplay(porcento)
+            
     def resultadoFinal(self):
         if self.op:
             self.num2 = self.pegarDisplay()
@@ -117,16 +108,27 @@ class MeuApp(QMainWindow):
         else:
             print("Não tem operação feita!")
 
+    def definirOperacao(self, operacao):
+        self.op = operacao
+        self.num1 = self.pegarDisplay()
+        self.num2 = 0
+        self.mostrarDisplay(0)
+
     def mostrarResultado(self):
-        if self.op:
+       if self.op:
             if self.num2:
                 self.num1 = self.pegarDisplay()
             else:
                 self.num2 = self.pegarDisplay()
-
+ 
             self.numResult = self.op()
             self.mostrarDisplay(self.numResult)
-            
+            print(self.numResult)
+
+    def trocaSinal(self):
+        numeroAtual = self.pegarDisplay()
+        numero *= -1
+        self.mostrarDisplay(numeroAtual)
 
 if __name__ == "__main__":
     app = QApplication([])
