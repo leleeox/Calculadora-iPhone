@@ -23,7 +23,11 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Calculadora</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../../../../Downloads/calculator_macos_bigsur_icon_190313.ico</normaloff>../../../../Downloads/calculator_macos_bigsur_icon_190313.ico</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">#centralwidget{
@@ -122,7 +126,7 @@
      <string>6</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="subtracao">
+   <widget class="QPushButton" name="btnSubtracao">
     <property name="geometry">
      <rect>
       <x>270</x>
@@ -152,7 +156,7 @@
      <string>-</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="adicao">
+   <widget class="QPushButton" name="btnAdicao">
     <property name="geometry">
      <rect>
       <x>270</x>
@@ -272,7 +276,7 @@
      <string>2</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="igual">
+   <widget class="QPushButton" name="btnResultado">
     <property name="geometry">
      <rect>
       <x>270</x>
@@ -299,7 +303,7 @@
      <string>=</string>
     </property>
     <property name="shortcut">
-     <string>=, Return, Enter</string>
+     <string>Return, Enter</string>
     </property>
    </widget>
    <widget class="QPushButton" name="numeroZero">
@@ -307,7 +311,7 @@
      <rect>
       <x>0</x>
       <y>450</y>
-      <width>180</width>
+      <width>181</width>
       <height>90</height>
      </rect>
     </property>
@@ -320,10 +324,10 @@
      <enum>Qt::DefaultContextMenu</enum>
     </property>
     <property name="toolTip">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="layoutDirection">
-     <enum>Qt::RightToLeft</enum>
+     <enum>Qt::LeftToRight</enum>
     </property>
     <property name="styleSheet">
      <string notr="true">margin: 5px;
@@ -335,13 +339,13 @@
     border-radius: 35px;</string>
     </property>
     <property name="text">
-     <string>0        </string>
+     <string>0</string>
     </property>
     <property name="shortcut">
      <string>0</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="virgula">
+   <widget class="QPushButton" name="btnVirgula">
     <property name="geometry">
      <rect>
       <x>180</x>
@@ -371,7 +375,7 @@
      <string>,</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="multiplicacao">
+   <widget class="QPushButton" name="btnMultiplicacao">
     <property name="geometry">
      <rect>
       <x>270</x>
@@ -491,7 +495,7 @@
      <string>8</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="divisao">
+   <widget class="QPushButton" name="btnDivisao">
     <property name="geometry">
      <rect>
       <x>270</x>
@@ -521,7 +525,7 @@
      <string>/</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="limparTudo">
+   <widget class="QPushButton" name="btnLimpar">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -534,6 +538,9 @@
      <font>
       <pointsize>28</pointsize>
      </font>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::RightToLeft</enum>
     </property>
     <property name="styleSheet">
      <string notr="true">margin: 5px;
@@ -579,11 +586,8 @@
     <property name="text">
      <string>%</string>
     </property>
-    <property name="shortcut">
-     <string>%</string>
-    </property>
    </widget>
-   <widget class="QPushButton" name="maisMenos">
+   <widget class="QPushButton" name="btnTrocarSinal">
     <property name="geometry">
      <rect>
       <x>90</x>
@@ -610,11 +614,8 @@
     <property name="text">
      <string>+/-</string>
     </property>
-    <property name="shortcut">
-     <string>Backspace</string>
-    </property>
    </widget>
-   <widget class="QLabel" name="resultado">
+   <widget class="QLabel" name="resultadoDisplay">
     <property name="geometry">
      <rect>
       <x>0</x>

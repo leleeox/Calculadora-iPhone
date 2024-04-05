@@ -19,16 +19,17 @@ class MeuApp(QMainWindow):
         return f'{path.dirname(path.realpath(__file__))}\\{relativo}'
 
     def acoesBotao(self):
-        self.numeroZero.clicked.connect(lambda: self.btnNumeros(0))
-        self.numeroUm.clicked.connect(lambda: self.btnNumeros(1))
-        self.numeroDois.clicked.connect(lambda: self.btnNumeros(2))
-        self.numeroTres.clicked.connect(lambda: self.btnNumeros(3))
-        self.numeroQuatro.clicked.connect(lambda: self.btnNumeros(4))
-        self.numeroCinco.clicked.connect(lambda: self.btnNumeros(5))
-        self.numeroSeis.clicked.connect(lambda: self.btnNumeros(6))
-        self.numeroSete.clicked.connect(lambda: self.btnNumeros(7))
-        self.numeroOito.clicked.connect(lambda: self.btnNumeros(8))
-        self.numeroNove.clicked.connect(lambda: self.btnNumeros(9))
+        self.numeroZero.clicked.connect(lambda: self.btnNumeros(self.numeroZero))
+        self.numeroUm.clicked.connect(lambda: self.btnNumeros(self.numeroUm))
+        self.numeroDois.clicked.connect(lambda: self.btnNumeros(self.numeroDois))
+        self.numeroTres.clicked.connect(lambda: self.btnNumeros(self.numeroTres))
+        self.numeroQuatro.clicked.connect(lambda: self.btnNumeros(self.numeroQuatro))
+        self.numeroCinco.clicked.connect(lambda: self.btnNumeros(self.numeroCinco))
+        self.numeroSeis.clicked.connect(lambda: self.btnNumeros(self.numeroSeis))
+        self.numeroSete.clicked.connect(lambda: self.btnNumeros(self.numeroSete))
+        self.numeroOito.clicked.connect(lambda: self.btnNumeros(self.numeroOito))
+        self.numeroNove.clicked.connect(lambda: self.btnNumeros(self.numeroNove))
+        self.btnVirgula.clicked.connect(lambda: self.btnNumeros(self.btnVirgula))
  
         
         self.btnResultado.clicked.connect(self.mostrarResultado)
@@ -36,7 +37,6 @@ class MeuApp(QMainWindow):
         self.btnLimpar.clicked.connect(self.limparNumeros)
         self.btnTrocarSinal.clicked.connect(self.trocaSinal)
         self.btnPorcentagem.clicked.connect(self.porcentagemNum) 
-        self.btnVirgula.clicked.connect(lambda: self.btnNumeros(self.btnVirgula))
 
 
         self.btnAdicao.clicked.connect(lambda: self.definirOperacao(self.somarNumeros))
@@ -80,19 +80,19 @@ class MeuApp(QMainWindow):
         self.mostrarDisplay(0)
         
     def somarNumeros(self):
-        print(f'Soma({self.num1}+{self.num2}) = ', end='')
+        #print(f'Soma({self.num1}+{self.num2}) = ', end='')
         return self.num1 + self.num2
    
     def subtrairNumeros(self):
-        print(f'Sub({self.num1} - {self.num2})= ', end='')
+        #print(f'Sub({self.num1} - {self.num2})= ', end='')
         return self.num1 - self.num2
     
     def multiplicarNumeros(self):
-        print(f'Mult({self.num1} * {self.num2})= ', end='')
+        #print(f'Mult({self.num1} * {self.num2})= ', end='')
         return self.num1 * self.num2
    
     def divisaoNumeros(self):
-        print(f'Div({self.num1} / {self.num2})= ', end='')
+        #print(f'Div({self.num1} / {self.num2})= ', end='')
         return self.num1 / self.num2
    
     def porcentagemNum(self):
@@ -123,7 +123,7 @@ class MeuApp(QMainWindow):
  
             self.numResult = self.op()
             self.mostrarDisplay(self.numResult)
-            print(self.numResult)
+            #print(self.numResult)
 
     def trocaSinal(self):
         numeroAtual = self.pegarDisplay()
