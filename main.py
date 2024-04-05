@@ -30,8 +30,8 @@ class MeuApp(QMainWindow):
         self.numeroOito.clicked.connect(lambda: self.btnNumeros(self.numeroOito))
         self.numeroNove.clicked.connect(lambda: self.btnNumeros(self.numeroNove))
         self.btnVirgula.clicked.connect(lambda: self.btnNumeros(self.btnVirgula))
- 
-        
+
+
         self.btnResultado.clicked.connect(self.mostrarResultado)
 
         self.btnLimpar.clicked.connect(self.limparNumeros)
@@ -90,7 +90,7 @@ class MeuApp(QMainWindow):
     def multiplicarNumeros(self):
         #print(f'Mult({self.num1} * {self.num2})= ', end='')
         return self.num1 * self.num2
-   
+
     def divisaoNumeros(self):
         #print(f'Div({self.num1} / {self.num2})= ', end='')
         return self.num1 / self.num2
