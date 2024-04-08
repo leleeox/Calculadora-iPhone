@@ -11,8 +11,8 @@
 <img src="imageCalculator.png"  alt="Main da Calculadora iPhone">
 </div>
  
-> Projeto desenvolvido durante o período do curso
-Técnico em Desenvolvimento de Sistemas no Senac Sorocaba.
+> Projeto desenvolvido durante o período do curso:
+Técnico em Desenvolvimento de Sistemas - Senac Sorocaba.
  
 ### Ajustes e melhorias
  
@@ -20,15 +20,16 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
  
 - [x] Interface Gráfica
 - [x] Layout do Iphone
-- [ ] Ajustar tamanho da fonte do display
+- [x] Prédefinir o tamanho fixo da interface
+- [x] Ajustar tamanho da fonte do display
 - [ ] Implementar notação cientifica
-- [ ] Prédefinir o tamanho fixo da interface
+
  
 ## 💻 Pré-requisitos
  
 Antes de começar, verifique se você atendeu aos seguintes requisitos:
  
-- Você instalou a versão mais recente do `<Python 3.12>
+- Você instalou a versão mais recente do `<Python 3.12>`
 - Configurar o ambiente virtual:
       -python -m venv env
 - Você tem uma máquina `<Windows / Linux >`.
@@ -40,7 +41,7 @@ Antes de começar, verifique se você atendeu aos seguintes requisitos:
  
 ## 🚀 Instalando <Calculadora iPhone>
  
-Para instalar o <nome_do_projeto>, siga estas etapas:
+Para instalar a <Calculadora iPhone>, siga estas etapas:
  
 Windows:
 ```
@@ -52,7 +53,7 @@ python -m pip install auto-py-to-exe
  
 ## ☕ Usando <Calculadora iPhone>
  
-Para usar <python.main>, siga estas etapas:
+Para usar `<python.main>`, siga estas etapas:
  
 ```
 python main.py
