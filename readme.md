@@ -12,16 +12,16 @@
 </div>
  
 > Projeto desenvolvido durante o período do curso:
-Técnico em Desenvolvimento de Sistemas - Senac Sorocaba.
+Técnico em Análise e Desenvolvimento de Sistemas - Senac Sorocaba.
  
 ### Ajustes e melhorias
  
 O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
  
 - [x] Interface Gráfica
-- [x] Layout do Iphone
+- [x] Layout do iPhone
 - [x] Prédefinir o tamanho fixo da interface
-- [x] Ajustar tamanho da fonte do display
+- [ ] Ajustar tamanho da fonte do display
 - [ ] Implementar notação cientifica
 
  
