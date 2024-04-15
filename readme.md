@@ -33,7 +33,6 @@ Antes de começar, verifique se você atendeu aos seguintes requisitos:
 - Configurar o ambiente virtual:
       -python -m venv env
 - Você tem uma máquina `<Windows / Linux >`.
--
 - Você tem que instalar as seguintes depedencias:
     -'PyQt5'
     -'Auto-Py-To-Exe'
