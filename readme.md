@@ -1,4 +1,4 @@
-# Calculadora Iphone <img src="iconeCalculadora.ico" width="32" alt="Icone da Calculadora iPhone">
+# Calculadora iPhone <img src="iconeCalculadora.ico" width="32" alt="Icone da Calculadora iPhone">
  
 <div align="center">
  
